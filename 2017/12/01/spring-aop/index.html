@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spring AOP面向切面编程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Xuuuuuu's Blog" />
+  
+  <meta name="description" content="一. AOP&amp;emsp;&amp;emsp;什么事AOP？AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为">
+<meta name="keywords" content="博客,开源项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring AOP面向切面编程">
+<meta property="og:url" content="http://yoursite.com/2017/12/01/spring-aop/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一. AOP&amp;emsp;&amp;emsp;什么事AOP？AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为的一个集合。不过OOP允许开发者定义纵向的关系，但并不适合定义横向的关系，例如日志功能。日志代">
+<meta property="og:image" content="http://oerolc7og.bkt.clouddn.com/images/miho/theme/github.jpg">
+<meta property="og:updated_time" content="2017-12-01T09:20:20.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring AOP面向切面编程">
+<meta name="twitter:description" content="一. AOP&amp;emsp;&amp;emsp;什么事AOP？AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为的一个集合。不过OOP允许开发者定义纵向的关系，但并不适合定义横向的关系，例如日志功能。日志代">
+<meta name="twitter:image" content="http://oerolc7og.bkt.clouddn.com/images/miho/theme/github.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Xuuuuuu&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/photo.jpg" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Xuuuuuu&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        打牌不一定会打,但摔牌一定要响!
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Xuuuuuu" target="_blank" href="//xuzpla.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xuzpla">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/xuzpla">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-spring-aop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Spring AOP面向切面编程
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/开源项目/">开源项目</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-12-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p><img src="http://oerolc7og.bkt.clouddn.com/images/miho/theme/github.jpg" alt="miho"></p>
+<h3 id="一-AOP"><a href="#一-AOP" class="headerlink" title="一. AOP"></a>一. AOP</h3><p>&emsp;&emsp;什么事AOP？AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为的一个集合。不过OOP允许开发者定义纵向的关系，但并不适合定义横向的关系，例如日志功能。日志代码往往横向地散布在所有对象层次中，而与它对应的对象的核心功能毫无关系对于其他类型的代码，如安全性、异常处理和透明的持续性也都是如此，这种散布在各处的无关的代码被称为横切（cross cutting），在OOP设计中，它导致了大量代码的重复，而不利于各个模块的重用。</p>
+<p>&emsp;&emsp;AOP技术恰恰相反，它利用一种称为”横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其命名为”Aspect”，即切面。所谓”切面”，简单说就是那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块之间的耦合度，并有利于未来的可操作性和可维护性。</p>
+<p>&emsp;&emsp;使用”横切”技术，AOP把软件系统分为两个部分：核心关注点和横切关注点。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。横切关注点的一个特点是，他们经常发生在核心关注点的多处，而各处基本相似，比如权限认证、日志、事物。AOP的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。</p>
+<h3 id="二-简单示例"><a href="#二-简单示例" class="headerlink" title="二. 简单示例"></a>二. 简单示例</h3><h4 id="2-1-配置方式"><a href="#2-1-配置方式" class="headerlink" title="2.1 配置方式"></a>2.1 配置方式</h4><p>基于xml方式配置</p>
+<p>首先创建一个service业务类<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.yangxin.core.service.impl;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired; </span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">import com.yangxin.core.dao.UserDao; </span><br><span class="line">import com.yangxin.core.pojo.User; </span><br><span class="line">import com.yangxin.core.service.UserService;</span><br><span class="line"></span><br><span class="line">@Service </span><br><span class="line">public class UserServiceImpl implements UserService &#123;</span><br><span class="line"></span><br><span class="line">	@Autowired</span><br><span class="line">	private UserDao userDao;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void addUser(User user) &#123;</span><br><span class="line">		userDao.insertUser(user);</span><br><span class="line">		System.out.println(<span class="string">"添加成功"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void deleteUser(String name) &#123;</span><br><span class="line">		userDao.deteleUser(name);</span><br><span class="line">		System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来创建一个切面类<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package com.yangxin.core.transaction;</span><br><span class="line">import org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line">import com.yangxin.core.pojo.User;</span><br><span class="line"></span><br><span class="line">public class TransactionDemo &#123;</span><br><span class="line"></span><br><span class="line">	//前置通知</span><br><span class="line">	public void <span class="function"><span class="title">startTransaction</span></span>()&#123;</span><br><span class="line">		System.out.println(<span class="string">"begin transaction "</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//后置通知</span><br><span class="line">	public void <span class="function"><span class="title">commitTransaction</span></span>()&#123;</span><br><span class="line">		System.out.println(<span class="string">"commit transaction "</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//环绕通知</span><br><span class="line">	public void around(ProceedingJoinPoint joinPoint) throws Throwable&#123;</span><br><span class="line">		System.out.println(<span class="string">"begin transaction"</span>);</span><br><span class="line">		joinPoint.proceed();</span><br><span class="line">		System.out.println(<span class="string">"commit transaction"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后把切面配置在applicationContext.xml中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:config &lt;aop:pointcut expression=<span class="string">"execution(* com.yangxin.core.service...*(..))"</span> id=<span class="string">"p1"</span> /&gt;</span><br><span class="line">	&lt;aop:aspect ref = <span class="string">"transactionDemo"</span>&gt;</span><br><span class="line">	&lt;aop:before method=<span class="string">"startTransaction"</span> pointcut-ref=<span class="string">"p1"</span> /&gt;</span><br><span class="line">	&lt;aop:after-returning method=<span class="string">"commitTransaction"</span> pointcut-ref=<span class="string">"p1"</span>/&gt;</span><br><span class="line">	&lt;/aop:aspect&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这里没有演示环绕通知</p>
+<p>好了，运行测试代码</p>
+<p>测试代码如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test </span><br><span class="line">public void <span class="function"><span class="title">test1</span></span>()&#123; </span><br><span class="line">	ApplicationContext applicationContext = new ClassPathXmlApplicationContext(<span class="string">"spring/applicationContext.xml"</span>);</span><br><span class="line">	UserService userService = applicationContext.getBean(UserService.class);</span><br><span class="line">	User user = new User();</span><br><span class="line">	user.setAge(19);</span><br><span class="line">	user.setName(<span class="string">"yangxin"</span>);	</span><br><span class="line">	userService.addUser(user);</span><br><span class="line">	userService.deteleUser(<span class="string">"yangxin"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>控制台输出如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin transaction</span><br><span class="line">添加成功</span><br><span class="line">commit transaction</span><br><span class="line">begin transaction</span><br><span class="line">删除成功</span><br><span class="line">commit transaction</span><br></pre></td></tr></table></figure></p>
+<p>现在来测试一下环绕通知</p>
+<p>修改一下applicationContext.xml中的配置切面那一部分</p>
+<p>修改后的代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aop:config &lt;aop:pointcut expression=<span class="string">"execution(* com.yangxin.core.service...*(..))"</span> id=<span class="string">"p1"</span> /&gt;</span><br><span class="line">    &lt;aop:aspect ref = <span class="string">"transactionDemo"</span>&gt;</span><br><span class="line">    &lt;aop:around method=<span class="string">"around"</span> pointcut-ref=<span class="string">"p1"</span>/&gt;</span><br><span class="line">    &lt;/aop:aspect&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure></p>
+<p>运行测试代码</p>
+<p>输出如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin transaction</span><br><span class="line">添加成功</span><br><span class="line">commit transaction</span><br><span class="line">begin transaction</span><br><span class="line">删除成功</span><br><span class="line">commit transaction</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-2-注解方式"><a href="#2-2-注解方式" class="headerlink" title="2.2 注解方式"></a>2.2 注解方式</h4><p>基于注解的切面的代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.yangxin.core.transaction;</span><br><span class="line"></span><br><span class="line">import org.aspectj.lang.ProceedingJoinPoint; </span><br><span class="line">import org.aspectj.lang.annotation.AfterReturning; </span><br><span class="line">import org.aspectj.lang.annotation.Around; </span><br><span class="line">import org.aspectj.lang.annotation.Aspect; </span><br><span class="line">import org.aspectj.lang.annotation.Before; </span><br><span class="line">import org.aspectj.lang.annotation.Pointcut;</span><br><span class="line"></span><br><span class="line">@Aspect public class TransactionDemo2 &#123;</span><br><span class="line"></span><br><span class="line">	@Pointcut(value=<span class="string">"execution(* com.yangxin.core.service.*.*.*(..))"</span>)</span><br><span class="line">	public void <span class="function"><span class="title">point</span></span>()&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Before(value=<span class="string">"point()"</span>)</span><br><span class="line">	public void <span class="function"><span class="title">before</span></span>()&#123;</span><br><span class="line">		System.out.println(<span class="string">"transaction begin"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@AfterReturning(value = <span class="string">"point()"</span>)</span><br><span class="line">	public void <span class="function"><span class="title">after</span></span>()&#123;</span><br><span class="line">		System.out.println(<span class="string">"transaction commit"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Around(<span class="string">"point()"</span>)</span><br><span class="line">	public void around(ProceedingJoinPoint joinPoint) throws Throwable&#123;</span><br><span class="line">		System.out.println(<span class="string">"transaction begin"</span>);</span><br><span class="line">		joinPoint.proceed();</span><br><span class="line">		System.out.println(<span class="string">"transaction commit"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在applicationContext.xml中配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = <span class="string">"transactionDemo2"</span> class = <span class="string">"com.yangxin.core.transaction.TransactionDemo2"</span> /&gt;</span><br><span class="line">&lt;aop:aspectj-autoproxy /&gt;</span><br></pre></td></tr></table></figure></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年12月01日 17:20</p>
+        <p>原始链接： <a class="post-url" href="/2017/12/01/spring-aop/" title="Spring AOP面向切面编程">http://yoursite.com/2017/12/01/spring-aop/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/photo.jpg" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多少都行~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/12/01/spring-aop/&title=《Spring AOP面向切面编程》 — Hexo&pic=http://oerolc7og.bkt.clouddn.com/images/miho/theme/github-second.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/12/01/spring-aop/&title=《Spring AOP面向切面编程》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/12/01/spring-aop/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring AOP面向切面编程》 — Hexo&url=http://yoursite.com/2017/12/01/spring-aop/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/12/01/spring-aop/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/12/01/spring-aop/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/博客/" class="color3">博客</a>
+      
+    <a href="/tags/开源项目/" class="color5">开源项目</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-AOP"><span class="post-toc-text">一. AOP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-简单示例"><span class="post-toc-text">二. 简单示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-配置方式"><span class="post-toc-text">2.1 配置方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-注解方式"><span class="post-toc-text">2.2 注解方式</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/12/01/intellij-idea/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Intellij IDEA 快捷键整理
+        
+      </span>
+    </a>
+  
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/开源项目/">开源项目</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
