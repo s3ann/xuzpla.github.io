@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>微信开发 | Xuuuuuu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Xuuuuuu's Blog" />
+  
+  <meta name="description" content="一. 微信授权跳转123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778pack">
+<meta name="keywords" content="博客,开源项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信开发">
+<meta property="og:url" content="https://xuzpla.github.io/2017/12/04/wx-jssdk/index.html">
+<meta property="og:site_name" content="Xuuuuuu&#39;s Blog">
+<meta property="og:description" content="一. 微信授权跳转123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778package com.controller;import java.io.IOExce">
+<meta property="og:updated_time" content="2017-12-04T08:10:33.012Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信开发">
+<meta name="twitter:description" content="一. 微信授权跳转123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778package com.controller;import java.io.IOExce">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Xuuuuuu&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/photo.jpg" alt="logo" style="width: 100%;height: 100%;">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Xuuuuuu&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        打牌不一定会打,但摔牌一定要响!
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Xuuuuuu" target="_blank" href="//xuzpla.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xuzpla">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/xuzpla">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-wx-jssdk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      微信开发
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/开源项目/">开源项目</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-12-04
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一-微信授权跳转"><a href="#一-微信授权跳转" class="headerlink" title="一. 微信授权跳转"></a>一. 微信授权跳转</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">package com.controller;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line">import org.springframework.context.annotation.Scope;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line">import org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">import com.payrong.mall.common.utils.Constants;</span><br><span class="line">import com.payrong.mall.common.utils.WxApi;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 微信控制器</span><br><span class="line"> */</span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(value=<span class="string">"/wx"</span>, produces = &#123;<span class="string">"text/html;charset=UTF-8"</span>&#125;)</span><br><span class="line">@ResponseBody</span><br><span class="line">@Scope(<span class="string">"prototype"</span>)</span><br><span class="line">public class WxController &#123;</span><br><span class="line">	private static final Logger <span class="built_in">log</span> = LoggerFactory.getLogger(WxController.class);</span><br><span class="line">	</span><br><span class="line">    /**</span><br><span class="line">     * 微信oauth授权跳转</span><br><span class="line">     * @param params</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     * @throws IOException </span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(value = <span class="string">"/wxRedirect"</span>)</span><br><span class="line">    public void wxRedirect(@RequestParam Map params, HttpServletResponse resp) throws IOException &#123;</span><br><span class="line">        log.info(<span class="string">"进入微信拉取用户信息oauth授权跳转----------snsapi_base------------------"</span>);</span><br><span class="line">        String wxRedirectUrl = <span class="string">"https://open.weixin.qq.com/connect/oauth2/authorize?appid="</span>+WxApi.APP_ID</span><br><span class="line">        				+ <span class="string">"&amp;redirect_uri="</span>+Constants.BASE_PATH+<span class="string">"/wx/wxRedirectResult"</span></span><br><span class="line">        				+ <span class="string">"&amp;response_type=code&amp;scope=snsapi_base&amp;state="</span>+params.get(<span class="string">"redirectUrl"</span>)+<span class="string">"_"</span>+params.get(<span class="string">"state"</span>)+<span class="string">"#wechat_redirect"</span>;</span><br><span class="line">        resp.sendRedirect(wxRedirectUrl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 微信oauth授权跳转结果</span><br><span class="line">     * @param request</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     * @throws IOException </span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(value = <span class="string">"/wxRedirectResult"</span>)</span><br><span class="line">    public void wxRedirectResult(HttpServletRequest request, HttpServletResponse resp) throws IOException &#123;</span><br><span class="line">        log.info(<span class="string">"进入微信oauth授权------------------------------"</span>);</span><br><span class="line">        String params = request.getParameter(<span class="string">"state"</span>);</span><br><span class="line">        String code = request.getParameter(<span class="string">"code"</span>);</span><br><span class="line">        String[] ps = params.split(<span class="string">"_"</span>);</span><br><span class="line">        String wxRedirectUrl = ps[0] + <span class="string">"&amp;state="</span> + ps[1] + <span class="string">"&amp;code="</span> + code;</span><br><span class="line">        log.info(<span class="string">"跳转结果------------------------------"</span>+wxRedirectUrl);</span><br><span class="line">        resp.sendRedirect(wxRedirectUrl);</span><br><span class="line">        <span class="built_in">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 微信oauth授权跳转(拉取用户微信信息)</span><br><span class="line">     * @param params</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     * @throws IOException </span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(value = <span class="string">"/wxRedirectUserInfo"</span>)</span><br><span class="line">    public void wxRedirectUserInfo(@RequestParam Map params, HttpServletResponse resp) throws IOException &#123;</span><br><span class="line">        log.info(<span class="string">"进入微信oauth授权跳转----------------snsapi_userinfo---------------"</span>);</span><br><span class="line">        String wxRedirectUrl = <span class="string">"https://open.weixin.qq.com/connect/oauth2/authorize?appid="</span>+WxApi.APP_ID</span><br><span class="line">        				+ <span class="string">"&amp;redirect_uri="</span>+Constants.BASE_PATH+<span class="string">"/wx/wxRedirectResult"</span></span><br><span class="line">        				+ <span class="string">"&amp;response_type=code&amp;scope=snsapi_userinfo&amp;state="</span>+params.get(<span class="string">"redirectUrl"</span>)+<span class="string">"_"</span>+params.get(<span class="string">"state"</span>)+<span class="string">"#wechat_redirect"</span>;</span><br><span class="line">        resp.sendRedirect(wxRedirectUrl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二-拉取微信信息"><a href="#二-拉取微信信息" class="headerlink" title="二. 拉取微信信息"></a>二. 拉取微信信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br></pre></td><td class="code"><pre><span class="line">package com.util.wxjssdk;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.io.OutputStream;</span><br><span class="line">import java.net.ConnectException;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import javax.net.ssl.HttpsURLConnection;</span><br><span class="line">import javax.net.ssl.SSLContext;</span><br><span class="line">import javax.net.ssl.SSLSocketFactory;</span><br><span class="line">import javax.net.ssl.TrustManager;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">import com.payrong.mall.common.utils.WxApi;</span><br><span class="line"></span><br><span class="line">import net.sf.json.JSONException;</span><br><span class="line">import net.sf.json.JSONObject;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 公众平台通用接口工具类</span><br><span class="line"> * </span><br><span class="line"> * @author liuyq</span><br><span class="line"> * @date 2013-08-09</span><br><span class="line"> */</span><br><span class="line">public class WeixinUtil &#123;</span><br><span class="line">	private static Logger <span class="built_in">log</span> = LoggerFactory.getLogger(WeixinUtil.class);</span><br><span class="line"></span><br><span class="line">	// 菜单创建（POST） 限100（次/天）   </span><br><span class="line">	public static String menu_create_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN"</span>; </span><br><span class="line">	</span><br><span class="line">	// 获取access_token的接口地址（GET） 限200（次/天）   </span><br><span class="line">	public final static String access_token_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=APPID&amp;secret=APPSECRET"</span>;  </span><br><span class="line">	</span><br><span class="line">	/** </span><br><span class="line">	 * 获取access_token </span><br><span class="line">	 * @param appid 凭证 </span><br><span class="line">	 * @param appsecret 密钥 </span><br><span class="line">	 * @<span class="built_in">return</span> </span><br><span class="line">	 */  </span><br><span class="line">	public static AccessToken getAccessToken(String appid, String appsecret) &#123;  </span><br><span class="line">	    AccessToken accessToken = null;  </span><br><span class="line">	  </span><br><span class="line">	    String requestUrl = access_token_url.replace(<span class="string">"APPID"</span>, appid).replace(<span class="string">"APPSECRET"</span>, appsecret);  </span><br><span class="line">	    JSONObject jsonObject = httpRequest(requestUrl, <span class="string">"GET"</span>, null);  </span><br><span class="line">	    // 如果请求成功   </span><br><span class="line">	    <span class="keyword">if</span> (null != jsonObject) &#123;  </span><br><span class="line">	        try &#123;  </span><br><span class="line">	            accessToken = new AccessToken();  </span><br><span class="line">	            accessToken.setToken(jsonObject.getString(<span class="string">"access_token"</span>));  </span><br><span class="line">	            accessToken.setExpiresIn(jsonObject.getInt(<span class="string">"expires_in"</span>));  </span><br><span class="line">	        &#125; catch (JSONException e) &#123;  </span><br><span class="line">	            accessToken = null;  </span><br><span class="line">	            // 获取token失败   </span><br><span class="line">	            log.error(<span class="string">"获取token失败 errcode:&#123;&#125; errmsg:&#123;&#125;"</span>, jsonObject.getInt(<span class="string">"errcode"</span>), jsonObject.getString(<span class="string">"errmsg"</span>));  </span><br><span class="line">	        &#125;  </span><br><span class="line">	    &#125;  </span><br><span class="line">	    <span class="built_in">return</span> accessToken;  </span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 发起https请求并获取结果</span><br><span class="line">	 * </span><br><span class="line">	 * @param requestUrl 请求地址</span><br><span class="line">	 * @param requestMethod 请求方式（GET、POST）</span><br><span class="line">	 * @param outputStr 提交的数据</span><br><span class="line">	 * @<span class="built_in">return</span> JSONObject(通过JSONObject.get(key)的方式获取json对象的属性值)</span><br><span class="line">	 */</span><br><span class="line">	public static JSONObject httpRequest(String requestUrl, String requestMethod, String outputStr) &#123;</span><br><span class="line">		JSONObject jsonObject = null;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		try &#123;</span><br><span class="line">			// 创建SSLContext对象，并使用我们指定的信任管理器初始化</span><br><span class="line">			TrustManager[] tm = &#123; new MyX509TrustManager() &#125;;</span><br><span class="line">			SSLContext sslContext = SSLContext.getInstance(<span class="string">"SSL"</span>, <span class="string">"SunJSSE"</span>);</span><br><span class="line">			sslContext.init(null, tm, new java.security.SecureRandom());</span><br><span class="line">			// 从上述SSLContext对象中得到SSLSocketFactory对象</span><br><span class="line">			SSLSocketFactory ssf = sslContext.getSocketFactory();</span><br><span class="line"></span><br><span class="line">			URL url = new URL(requestUrl);</span><br><span class="line">			HttpsURLConnection httpUrlConn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">			httpUrlConn.setSSLSocketFactory(ssf);</span><br><span class="line"></span><br><span class="line">			httpUrlConn.setDoOutput(<span class="literal">true</span>);</span><br><span class="line">			httpUrlConn.setDoInput(<span class="literal">true</span>);</span><br><span class="line">			httpUrlConn.setUseCaches(<span class="literal">false</span>);</span><br><span class="line">			// 设置请求方式（GET/POST）</span><br><span class="line">			httpUrlConn.setRequestMethod(requestMethod);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (<span class="string">"GET"</span>.equalsIgnoreCase(requestMethod))</span><br><span class="line">				httpUrlConn.connect();</span><br><span class="line"></span><br><span class="line">			// 当有数据需要提交时</span><br><span class="line">			<span class="keyword">if</span> (null != outputStr) &#123;</span><br><span class="line">				OutputStream outputStream = httpUrlConn.getOutputStream();</span><br><span class="line">				// 注意编码格式，防止中文乱码</span><br><span class="line">				outputStream.write(outputStr.getBytes(<span class="string">"UTF-8"</span>));</span><br><span class="line">				outputStream.close();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 将返回的输入流转换成字符串</span><br><span class="line">			InputStream inputStream = httpUrlConn.getInputStream();</span><br><span class="line">			InputStreamReader inputStreamReader = new InputStreamReader(inputStream, <span class="string">"utf-8"</span>);</span><br><span class="line">			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);</span><br><span class="line"></span><br><span class="line">			String str = null;</span><br><span class="line">			<span class="keyword">while</span> ((str = bufferedReader.readLine()) != null) &#123;</span><br><span class="line">				buffer.append(str);</span><br><span class="line">			&#125;</span><br><span class="line">			bufferedReader.close();</span><br><span class="line">			inputStreamReader.close();</span><br><span class="line">			// 释放资源</span><br><span class="line">			inputStream.close();</span><br><span class="line">			inputStream = null;</span><br><span class="line">			httpUrlConn.disconnect();</span><br><span class="line">			jsonObject = JSONObject.fromObject(buffer.toString());</span><br><span class="line">		&#125; catch (ConnectException ce) &#123;</span><br><span class="line">			log.error(<span class="string">"Weixin server connection timed out."</span>);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			log.error(<span class="string">"https request error:&#123;&#125;"</span>, e);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> jsonObject;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 获取unionId</span><br><span class="line">	 * @param request </span><br><span class="line">	 * @<span class="built_in">return</span> String</span><br><span class="line">	 */</span><br><span class="line">	public static String getUnionId(HttpServletRequest request) &#123;</span><br><span class="line">		HttpSession session = request.getSession();</span><br><span class="line">		Object unionId = session.getAttribute(<span class="string">"unionId"</span>);</span><br><span class="line">		log.info(<span class="string">"session中的unionid-----------------------"</span> + unionId);</span><br><span class="line">		<span class="keyword">if</span>(unionId==null || unionId.equals(<span class="string">""</span>))&#123;</span><br><span class="line">			String code = request.getParameter(<span class="string">"code"</span>);</span><br><span class="line">			log.info(<span class="string">"code-----------------"</span> + code);</span><br><span class="line">			// 获取openID</span><br><span class="line">			String openURL = <span class="string">"https://api.weixin.qq.com/sns/oauth2/access_token?appid="</span> + WxApi.APP_ID + <span class="string">"&amp;secret="</span></span><br><span class="line">					+ WxApi.APP_SECRET + <span class="string">"&amp;code="</span> + code + <span class="string">"&amp;grant_type=authorization_code"</span>;</span><br><span class="line">			JSONObject openJson = httpRequest(openURL, <span class="string">"GET"</span>, null);</span><br><span class="line">			log.info(<span class="string">"openJson:"</span> + openJson.toString());</span><br><span class="line">			Iterator it = openJson.keys();</span><br><span class="line">			String openid = <span class="string">""</span>;</span><br><span class="line">			String accessToken = <span class="string">""</span>;</span><br><span class="line">			String unionid = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">				String key = (String) it.next();</span><br><span class="line">				<span class="keyword">if</span> (key.equals(<span class="string">"openid"</span>)) &#123;</span><br><span class="line">					openid = openJson.getString(key); // 类型强转失败会异常</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"access_token"</span>)) &#123;</span><br><span class="line">					accessToken = openJson.getString(key);</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"unionid"</span>)) &#123;</span><br><span class="line">					unionid = openJson.getString(key);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			log.info(<span class="string">"获取到的unionid-----------------------"</span> + unionid);</span><br><span class="line">			session.setAttribute(<span class="string">"unionId"</span>, unionid);</span><br><span class="line">			<span class="built_in">return</span> unionid;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			String unionid = (String)unionId;</span><br><span class="line">			<span class="built_in">return</span> unionid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 获取unionId</span><br><span class="line">	 * @param request </span><br><span class="line">	 * @<span class="built_in">return</span> String</span><br><span class="line">	 */</span><br><span class="line">	public static String getOpenId(HttpServletRequest request) &#123;</span><br><span class="line">		HttpSession session = request.getSession();</span><br><span class="line">		Object openId = session.getAttribute(<span class="string">"openId"</span>);</span><br><span class="line">		log.info(<span class="string">"session中的openId-----------------------"</span> + openId);</span><br><span class="line">		<span class="keyword">if</span>(openId==null || openId.equals(<span class="string">""</span>))&#123;</span><br><span class="line">			String code = request.getParameter(<span class="string">"code"</span>);</span><br><span class="line">			log.info(<span class="string">"code-----------------"</span> + code);</span><br><span class="line">			// 获取openID</span><br><span class="line">			String openURL = <span class="string">"https://api.weixin.qq.com/sns/oauth2/access_token?appid="</span> + WxApi.APP_ID + <span class="string">"&amp;secret="</span></span><br><span class="line">					+ WxApi.APP_SECRET + <span class="string">"&amp;code="</span> + code + <span class="string">"&amp;grant_type=authorization_code"</span>;</span><br><span class="line">			JSONObject openJson = httpRequest(openURL, <span class="string">"GET"</span>, null);</span><br><span class="line">			log.info(<span class="string">"openJson:"</span> + openJson.toString());</span><br><span class="line">			Iterator it = openJson.keys();</span><br><span class="line">			String openid = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">				String key = (String) it.next();</span><br><span class="line">				<span class="keyword">if</span> (key.equals(<span class="string">"openid"</span>)) &#123;</span><br><span class="line">					openid = openJson.getString(key); // 类型强转失败会异常</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			log.info(<span class="string">"获取到的openId-----------------------"</span> + openid);</span><br><span class="line">			session.setAttribute(<span class="string">"openId"</span>, openid);</span><br><span class="line">			<span class="built_in">return</span> openid;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			String openid = (String)openId;</span><br><span class="line">			<span class="built_in">return</span> openid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 获取unionId和openId</span><br><span class="line">	 * @param request </span><br><span class="line">	 * @<span class="built_in">return</span> String</span><br><span class="line">	 */</span><br><span class="line">	public static Map&lt;String, Object&gt; getUnionIdAndOpenId(HttpServletRequest request) &#123;</span><br><span class="line">		Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</span><br><span class="line">		</span><br><span class="line">		HttpSession session = request.getSession();</span><br><span class="line">		Object unionId = session.getAttribute(<span class="string">"unionId"</span>);</span><br><span class="line">		Object openId = session.getAttribute(<span class="string">"openId"</span>);</span><br><span class="line">		log.info(<span class="string">"session中的unionid:"</span> + unionId + <span class="string">"---openId:"</span> + openId);</span><br><span class="line">		<span class="keyword">if</span>(unionId==null || unionId.equals(<span class="string">""</span>) || openId==null || openId.equals(<span class="string">""</span>))&#123;</span><br><span class="line">			String code = request.getParameter(<span class="string">"code"</span>);</span><br><span class="line">			log.info(<span class="string">"code-----------------"</span> + code);</span><br><span class="line">			// 获取openID</span><br><span class="line">			String openURL = <span class="string">"https://api.weixin.qq.com/sns/oauth2/access_token?appid="</span> + WxApi.APP_ID + <span class="string">"&amp;secret="</span></span><br><span class="line">					+ WxApi.APP_SECRET + <span class="string">"&amp;code="</span> + code + <span class="string">"&amp;grant_type=authorization_code"</span>;</span><br><span class="line">			JSONObject openJson = httpRequest(openURL, <span class="string">"GET"</span>, null);</span><br><span class="line">			log.info(<span class="string">"openJson:"</span> + openJson.toString());</span><br><span class="line">			Iterator it = openJson.keys();</span><br><span class="line">			String openid = <span class="string">""</span>;</span><br><span class="line">			String unionid = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">				String key = (String) it.next();</span><br><span class="line">				<span class="keyword">if</span> (key.equals(<span class="string">"openid"</span>)) &#123;</span><br><span class="line">					openid = openJson.getString(key); // 类型强转失败会异常</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"unionid"</span>)) &#123;</span><br><span class="line">					unionid = openJson.getString(key);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			session.setAttribute(<span class="string">"unionId"</span>, unionid);</span><br><span class="line">			session.setAttribute(<span class="string">"openId"</span>, openid);</span><br><span class="line">			returnMap.put(<span class="string">"unionId"</span>, unionid);</span><br><span class="line">			returnMap.put(<span class="string">"openId"</span>, openid);</span><br><span class="line">			<span class="built_in">return</span> returnMap;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			String unionid = (String)unionId;</span><br><span class="line">			String openid = (String)openId;</span><br><span class="line">			returnMap.put(<span class="string">"unionId"</span>, unionid);</span><br><span class="line">			returnMap.put(<span class="string">"openId"</span>, openid);</span><br><span class="line">			<span class="built_in">return</span> returnMap;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 获取微信用户信息</span><br><span class="line">	 * @param request </span><br><span class="line">	 * @<span class="built_in">return</span> String</span><br><span class="line">	 */</span><br><span class="line">	public static Map&lt;String, Object&gt; getWxUserInfo(HttpServletRequest request) &#123;</span><br><span class="line">		Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</span><br><span class="line">		</span><br><span class="line">		// 下面就到了获取openid,这个代表用户id.</span><br><span class="line">		String code = request.getParameter(<span class="string">"code"</span>);</span><br><span class="line">		String state = request.getParameter(<span class="string">"state"</span>);</span><br><span class="line">		log.info(<span class="string">"code--------------"</span> + code + <span class="string">"-----------state--------------"</span> + state);</span><br><span class="line">		// 获取openID</span><br><span class="line">		String openURL = <span class="string">"https://api.weixin.qq.com/sns/oauth2/access_token?appid="</span> + WxApi.APP_ID + <span class="string">"&amp;secret="</span></span><br><span class="line">				+ WxApi.APP_SECRET + <span class="string">"&amp;code="</span> + code + <span class="string">"&amp;grant_type=authorization_code"</span>;</span><br><span class="line">		JSONObject openJson = WeixinUtil.httpRequest(openURL, <span class="string">"GET"</span>, null);</span><br><span class="line">		Iterator it = openJson.keys();</span><br><span class="line">		String openid = <span class="string">""</span>;</span><br><span class="line">		String accessToken = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">			String key = (String) it.next();</span><br><span class="line">			<span class="keyword">if</span> (key.equals(<span class="string">"openid"</span>)) &#123;</span><br><span class="line">				openid = openJson.getString(key); // 类型强转失败会异常</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"access_token"</span>)) &#123;</span><br><span class="line">				accessToken = openJson.getString(key);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		log.info(<span class="string">"openid----------------------"</span> + openid);</span><br><span class="line">		returnMap.put(<span class="string">"openid"</span>, openid);</span><br><span class="line"></span><br><span class="line">		// 微信接口获取微信用户信息</span><br><span class="line">		String userInfoUrl = <span class="string">"https://api.weixin.qq.com/sns/userinfo?access_token="</span> + accessToken + <span class="string">"&amp;openid="</span> + openid + <span class="string">"&amp;lang=zh_CN"</span>;</span><br><span class="line">		log.info(<span class="string">"userInfoUrl------------------------------"</span> + userInfoUrl);</span><br><span class="line">		JSONObject userJson = WeixinUtil.httpRequest(userInfoUrl, <span class="string">"GET"</span>, null);</span><br><span class="line">		log.info(<span class="string">"拉取到的微信用户信息:"</span> + userJson);</span><br><span class="line">		Iterator userIt = userJson.keys();</span><br><span class="line">		<span class="keyword">while</span> (userIt.hasNext()) &#123;</span><br><span class="line">			String key = (String) userIt.next();</span><br><span class="line">			<span class="keyword">if</span> (key.equals(<span class="string">"nickname"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"nickname"</span>, userJson.get(key));</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"headimgurl"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"headimgurl"</span>, userJson.get(key));</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"unionid"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"unionid"</span>, userJson.get(key));</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"city"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"city"</span>, userJson.get(key));</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"province"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"province"</span>, userJson.get(key));</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"country"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"country"</span>, userJson.get(key));</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.equals(<span class="string">"sex"</span>)) &#123;</span><br><span class="line">				returnMap.put(<span class="string">"sex"</span>, userJson.get(key));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> returnMap;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-微信开发工具类"><a href="#三-微信开发工具类" class="headerlink" title="三. 微信开发工具类"></a>三. 微信开发工具类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">package utils;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSONObject;</span><br><span class="line">import groovy.json.JsonSlurper;</span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.math.RoundingMode;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class WxApiUtil &#123;</span><br><span class="line">    private static final Logger <span class="built_in">log</span> = LoggerFactory.getLogger(WxApiUtil.class);</span><br><span class="line"></span><br><span class="line">    public static String APP_ID = <span class="string">"wxfb1a7a4b6704e6b0"</span>;</span><br><span class="line">    public static String APP_SECRET = <span class="string">"44b0e73870ca9fe382303e79241c07b0"</span>;</span><br><span class="line"></span><br><span class="line">    public static double ACCESS_TOKEN_CREATE_TIME = 0;</span><br><span class="line">    public static String ACCESS_TOKEN = <span class="string">""</span>;</span><br><span class="line">    /**</span><br><span class="line">     * 支付完成通知</span><br><span class="line">     * @param openId</span><br><span class="line">     * @param orderNo</span><br><span class="line">     * @param body</span><br><span class="line">     * @param amount</span><br><span class="line">     * @param shortUrl</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     */</span><br><span class="line">    public static void orderHadPayNotify(String openId, String orderNo, String body, String amount, String shortUrl) &#123;</span><br><span class="line">        log.info(<span class="string">"付款订单支付完成通知"</span>);</span><br><span class="line">        Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        map.put(<span class="string">"touser"</span>, openId);</span><br><span class="line">        map.put(<span class="string">"template_id"</span>, <span class="string">"1LGTQqq68r_q--zl33bPQ104oRWkxNd1wskSDCT2Zn4"</span>);</span><br><span class="line">        String clickUrl = <span class="string">"<span class="variable">$&#123;Constant.DASHBOARD_CASH_ORDER_NOTIFY&#125;</span>/"</span>+shortUrl;</span><br><span class="line">        // map.url = clickUrl</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        data.put(<span class="string">"first"</span>, <span class="string">"['value': '您的订单已被成功支付']"</span>);</span><br><span class="line"></span><br><span class="line">        BigDecimal am = new BigDecimal(amount).divide(new BigDecimal(<span class="string">"100"</span>)).setScale(2, RoundingMode.HALF_UP);</span><br><span class="line"></span><br><span class="line">        //String d = new Date().(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">        /*data.orderProductName = [<span class="string">"value"</span>: body as String]//商品信息</span><br><span class="line">        data.orderMoneySum = [<span class="string">"value"</span>: am+<span class="string">"元"</span>]//支付金额</span><br><span class="line">        data.Remark = [<span class="string">"value"</span>: <span class="string">"订单编号：<span class="variable">$&#123;orderNo&#125;</span>"</span> as String]//备注</span><br><span class="line">        map.data = data*/</span><br><span class="line">        sendNotify(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 发送通知</span><br><span class="line">     * @param map</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     */</span><br><span class="line">    public static void sendNotify(Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">        String reqJson = JSONObject.toJSONString(map);</span><br><span class="line">        String url = <span class="string">"https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="</span> + getAccessToken();</span><br><span class="line">        String result = Tools.doJson(url, reqJson);</span><br><span class="line">        log.info(<span class="string">"发送模板信息:"</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取成功Token</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     */</span><br><span class="line">    public static String <span class="function"><span class="title">getAccessToken</span></span>() &#123;</span><br><span class="line">        double diffTime = System.currentTimeMillis() - ACCESS_TOKEN_CREATE_TIME;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">""</span>.equals(ACCESS_TOKEN) || diffTime / 1000 &gt; 5000) &#123;</span><br><span class="line">            log.info(<span class="string">"获取微信access token"</span>);</span><br><span class="line">            String url = <span class="string">"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid="</span> + APP_ID + <span class="string">"&amp;secret="</span> + APP_SECRET;</span><br><span class="line">            String result = Tools.doGetHttps(url);</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">""</span>.equals(result)) &#123;</span><br><span class="line">                Object root = new JsonSlurper().parseText(result);</span><br><span class="line">                Map m = (Map) root;</span><br><span class="line">                ACCESS_TOKEN = (String) m.get(<span class="string">"access_token"</span>);</span><br><span class="line">                ACCESS_TOKEN_CREATE_TIME = System.currentTimeMillis();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                net.sf.json.JSONObject res = net.sf.json.JSONObject.fromObject(result);</span><br><span class="line">                ACCESS_TOKEN = res.getString(<span class="string">"access_token"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        log.info(<span class="string">"返回 token:"</span> + ACCESS_TOKEN);</span><br><span class="line">        <span class="built_in">return</span> ACCESS_TOKEN;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 实名认证审核通知</span><br><span class="line">     * @param openId</span><br><span class="line">     * @param merName</span><br><span class="line">     * @param status</span><br><span class="line">     * @param msg</span><br><span class="line">     * @param realName</span><br><span class="line">     * @param idCardNo</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     */</span><br><span class="line">    public static void examineMerQualificationNotify(String openId, String merId, String merName, String status, String msg, String realName, String idCardNo) &#123;</span><br><span class="line">        log.info(<span class="string">"实名认证审核通知"</span>);</span><br><span class="line">        Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        map.put(<span class="string">"touser"</span>, openId);</span><br><span class="line">        map.put(<span class="string">"template_id"</span>, <span class="string">"ApB1jh75-nXvjHXPXkMxZ9MBBjA2iPlein8nkfTrOQs"</span>);</span><br><span class="line">        SimpleDateFormat sm = new SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">        String time = sm.format(new Date());</span><br><span class="line">        Map&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; first = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; keyword1 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; keyword2 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; keyword3 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; keyword4 = new HashMap&lt;String, Object&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; remark = new HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line">        String examineStatus = <span class="string">""</span>;</span><br><span class="line">        String url = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"1"</span>.equals(status))&#123;</span><br><span class="line">            examineStatus = <span class="string">"您提交的证照已通过审核"</span>;</span><br><span class="line">            url = Constant.GEN_CASHIER + <span class="string">"/merchantQualifications/authExamineSuccess?realName="</span>+realName+<span class="string">"&amp;idCardNo="</span>+idCardNo;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            examineStatus = <span class="string">"您提交的证照未通过审核"</span>;</span><br><span class="line">            url = Constant.GEN_CASHIER + <span class="string">"/merchantQualifications/toQualification?userId="</span>+merId;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        first.put(<span class="string">"value"</span>, <span class="string">"商户审核状态通知"</span>);</span><br><span class="line">        keyword1.put(<span class="string">"value"</span>, merName);</span><br><span class="line">        keyword1.put(<span class="string">"color"</span>, <span class="string">"#FF0000"</span>);</span><br><span class="line">        keyword2.put(<span class="string">"value"</span>, <span class="string">"商户证照审核"</span>);</span><br><span class="line">        keyword3.put(<span class="string">"value"</span>, examineStatus);</span><br><span class="line">        keyword3.put(<span class="string">"color"</span>, <span class="string">"#FF0000"</span>);</span><br><span class="line">        keyword4.put(<span class="string">"value"</span>, time);</span><br><span class="line">        remark.put(<span class="string">"value"</span>, msg);</span><br><span class="line"></span><br><span class="line">        data.put(<span class="string">"first"</span>, first);</span><br><span class="line">        data.put(<span class="string">"keyword1"</span>, keyword1);</span><br><span class="line">        data.put(<span class="string">"keyword2"</span>, keyword2);</span><br><span class="line">        data.put(<span class="string">"keyword3"</span>, keyword3);</span><br><span class="line">        data.put(<span class="string">"keyword4"</span>, keyword4);</span><br><span class="line">        data.put(<span class="string">"remark"</span>, remark);</span><br><span class="line">        map.put(<span class="string">"data"</span>, data);</span><br><span class="line">        map.put(<span class="string">"url"</span>, url);</span><br><span class="line">        sendNotify(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        examineMerQualificationNotify(<span class="string">"oLFXlvvXQVioUhsAfktD_vtVUtHs"</span>, <span class="string">"123"</span>,<span class="string">"测试"</span>, <span class="string">"1"</span>, <span class="string">"测试通过"</span>, <span class="string">"xu"</span>, <span class="string">"36232654564"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年12月04日 16:10</p>
+        <p>原始链接： <a class="post-url" href="/2017/12/04/wx-jssdk/" title="微信开发">https://xuzpla.github.io/2017/12/04/wx-jssdk/</a></p>
+        <footer>
+            <a href="https://xuzpla.github.io">
+                <img src="/images/photo.jpg" alt="Xuuuuuu">
+                Xuuuuuu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多少都行~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xuzpla.github.io/2017/12/04/wx-jssdk/&title=《微信开发》 — Xuuuuuu's Blog&pic=https://xuzpla.github.ioimages/photo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xuzpla.github.io/2017/12/04/wx-jssdk/&title=《微信开发》 — Xuuuuuu's Blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xuzpla.github.io/2017/12/04/wx-jssdk/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信开发》 — Xuuuuuu's Blog&url=https://xuzpla.github.io/2017/12/04/wx-jssdk/&via=https://xuzpla.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xuzpla.github.io/2017/12/04/wx-jssdk/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://xuzpla.github.io/2017/12/04/wx-jssdk/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/博客/" class="color3">博客</a>
+      
+    <a href="/tags/开源项目/" class="color5">开源项目</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-微信授权跳转"><span class="post-toc-text">一. 微信授权跳转</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-拉取微信信息"><span class="post-toc-text">二. 拉取微信信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-微信开发工具类"><span class="post-toc-text">三. 微信开发工具类</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/12/04/jvm/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          JVM运行时数据区
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/12/04/thread/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">JAVA线程</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+      &copy; 2017 Xuuuuuu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://xuzpla.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/开源项目/">开源项目</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

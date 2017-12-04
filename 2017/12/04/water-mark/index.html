@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>图片添加水印 | Xuuuuuu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Xuuuuuu's Blog" />
+  
+  <meta name="description" content="一. 普通示例11.1 线程类1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374packag">
+<meta name="keywords" content="博客,开源项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片添加水印">
+<meta property="og:url" content="https://xuzpla.github.io/2017/12/04/water-mark/index.html">
+<meta property="og:site_name" content="Xuuuuuu&#39;s Blog">
+<meta property="og:description" content="一. 普通示例11.1 线程类1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374package utils;import javax.imageio.ImageIO;imp">
+<meta property="og:image" content="https://xuzpla.github.io/images/qrCode.jpg">
+<meta property="og:updated_time" content="2017-12-04T07:57:03.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图片添加水印">
+<meta name="twitter:description" content="一. 普通示例11.1 线程类1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374package utils;import javax.imageio.ImageIO;imp">
+<meta name="twitter:image" content="https://xuzpla.github.io/images/qrCode.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Xuuuuuu&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/photo.jpg" alt="logo" style="width: 100%;height: 100%;">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Xuuuuuu&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        打牌不一定会打,但摔牌一定要响!
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Xuuuuuu" target="_blank" href="//xuzpla.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xuzpla">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/xuzpla">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-water-mark" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      图片添加水印
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/开源项目/">开源项目</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-12-04
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一-普通示例1"><a href="#一-普通示例1" class="headerlink" title="一. 普通示例1"></a>一. 普通示例1</h3><h4 id="1-1-线程类"><a href="#1-1-线程类" class="headerlink" title="1.1 线程类"></a>1.1 线程类</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">package utils;</span><br><span class="line">import javax.imageio.ImageIO;</span><br><span class="line">import java.awt.*;</span><br><span class="line">import java.awt.Image;</span><br><span class="line">import java.awt.image.BufferedImage;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line"></span><br><span class="line">public class WaterMarkUtils &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 图片添加水印</span><br><span class="line">     * @param outImgPath 需要添加水印的图片的路径</span><br><span class="line">     * @param newImgPath 添加水印后图片输出路径</span><br><span class="line">     * @param markContentColor 水印文字的颜色</span><br><span class="line">     * @param waterMarkContent 水印的文字</span><br><span class="line">     * @param waterMarkContent 水印的图片</span><br><span class="line">     */</span><br><span class="line">    public static void mark(String outImgPath, String newImgPath, Color markContentColor, String waterMarkContent, String inImgPath) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            // 读取原图片信息</span><br><span class="line">            File srcImgFile = new File(outImgPath);</span><br><span class="line">            Image srcImg = ImageIO.read(srcImgFile);</span><br><span class="line">            int srcImgWidth = srcImg.getWidth(null);</span><br><span class="line">            int srcImgHeight = srcImg.getHeight(null);</span><br><span class="line"></span><br><span class="line">            // 加水印</span><br><span class="line">            BufferedImage bufImg = new BufferedImage(srcImgWidth, srcImgHeight, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">            Graphics2D g = bufImg.createGraphics();</span><br><span class="line">            g.drawImage(srcImg, 0, 0, srcImgWidth, srcImgHeight, null);</span><br><span class="line"></span><br><span class="line">            /*---------------------------图片水印--------------------------*/</span><br><span class="line">            Image waterImage = ImageIO.read(new File(inImgPath));// 水印文件</span><br><span class="line">            int localWith = 301;</span><br><span class="line">            int localHeight = 620;</span><br><span class="line">            g.drawImage(waterImage, localWith, localHeight, 756, 756, null);</span><br><span class="line">            /*------------------------图片水印 end-------------------------*/</span><br><span class="line">            /*--------------------------文字水印--------------------------*/</span><br><span class="line">            //Font font = new Font(<span class="string">"Courier New"</span>, Font.PLAIN, 12);</span><br><span class="line">            Font font = new Font(<span class="string">"微软雅黑"</span>, Font.PLAIN, 30);</span><br><span class="line">            g.setColor(markContentColor); //根据图片的背景设置水印颜色</span><br><span class="line"></span><br><span class="line">            g.setFont(font);</span><br><span class="line">            int x = (srcImgWidth - getWatermarkLength(waterMarkContent, g))/2;</span><br><span class="line">            int y = 1350;</span><br><span class="line">            //int x = (srcImgWidth - getWatermarkLength(watermarkStr, g)) / 2;</span><br><span class="line">            //int y = srcImgHeight / 2;</span><br><span class="line">            g.drawString(waterMarkContent, x, y);</span><br><span class="line">            /*------------------------文字水印 end-------------------------*/</span><br><span class="line">            g.dispose();</span><br><span class="line">            // 输出图片</span><br><span class="line">            FileOutputStream outImgStream = new FileOutputStream(newImgPath);</span><br><span class="line">            ImageIO.write(bufImg, <span class="string">"jpg"</span>, outImgStream);</span><br><span class="line">            outImgStream.flush();</span><br><span class="line">            outImgStream.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取水印文字总长度</span><br><span class="line">     * @param waterMarkContent 水印的文字</span><br><span class="line">     * @param g</span><br><span class="line">     * @<span class="built_in">return</span> 水印文字总长度</span><br><span class="line">     */</span><br><span class="line">    public static int getWatermarkLength(String waterMarkContent, Graphics2D g) &#123;</span><br><span class="line">        <span class="built_in">return</span> g.getFontMetrics(g.getFont()).charsWidth(waterMarkContent.toCharArray(), 0, waterMarkContent.length());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 原图位置, 输出图片位置, 水印文字颜色, 水印文字</span><br><span class="line">        new WaterMarkUtils().mark(<span class="string">"g:/outImg.png"</span>, <span class="string">"g:/newImg.png"</span>, Color.black, <span class="string">"No.29000100481"</span>, <span class="string">"g:/inImg.png"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://xuzpla.github.io/images/qrCode.jpg" alt="miho"></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年12月04日 15:57</p>
+        <p>原始链接： <a class="post-url" href="/2017/12/04/water-mark/" title="图片添加水印">https://xuzpla.github.io/2017/12/04/water-mark/</a></p>
+        <footer>
+            <a href="https://xuzpla.github.io">
+                <img src="/images/photo.jpg" alt="Xuuuuuu">
+                Xuuuuuu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多少都行~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xuzpla.github.io/2017/12/04/water-mark/&title=《图片添加水印》 — Xuuuuuu's Blog&pic=https://xuzpla.github.ioimages/photo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xuzpla.github.io/2017/12/04/water-mark/&title=《图片添加水印》 — Xuuuuuu's Blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xuzpla.github.io/2017/12/04/water-mark/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图片添加水印》 — Xuuuuuu's Blog&url=https://xuzpla.github.io/2017/12/04/water-mark/&via=https://xuzpla.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xuzpla.github.io/2017/12/04/water-mark/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://xuzpla.github.io/2017/12/04/water-mark/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/博客/" class="color3">博客</a>
+      
+    <a href="/tags/开源项目/" class="color5">开源项目</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-普通示例1"><span class="post-toc-text">一. 普通示例1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-线程类"><span class="post-toc-text">1.1 线程类</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/12/04/thread/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          JAVA线程
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/12/01/intellij-idea/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Intellij IDEA 快捷键整理</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+      &copy; 2017 Xuuuuuu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://xuzpla.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/开源项目/">开源项目</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

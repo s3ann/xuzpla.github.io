@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cookie与Session | Xuuuuuu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Xuuuuuu's Blog" />
+  
+  <meta name="description" content="具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。 一. Cookie 和Session 的区别1.1 cookie数据存放在客户的浏览器上，session数据放在服务器上。 1.2 cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKI">
+<meta name="keywords" content="博客,开源项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie与Session">
+<meta property="og:url" content="https://xuzpla.github.io/2017/12/04/cookie/index.html">
+<meta property="og:site_name" content="Xuuuuuu&#39;s Blog">
+<meta property="og:description" content="具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。 一. Cookie 和Session 的区别1.1 cookie数据存放在客户的浏览器上，session数据放在服务器上。 1.2 cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。 1.3 session会在一定时间内">
+<meta property="og:updated_time" content="2017-12-04T08:31:41.015Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cookie与Session">
+<meta name="twitter:description" content="具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。 一. Cookie 和Session 的区别1.1 cookie数据存放在客户的浏览器上，session数据放在服务器上。 1.2 cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。 1.3 session会在一定时间内">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Xuuuuuu&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/photo.jpg" alt="logo" style="width: 100%;height: 100%;">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Xuuuuuu&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        打牌不一定会打,但摔牌一定要响!
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Xuuuuuu" target="_blank" href="//xuzpla.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/xuzpla">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/xuzpla">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-cookie" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Cookie与Session
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/开源项目/">开源项目</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-12-04
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。</p>
+<h3 id="一-Cookie-和Session-的区别"><a href="#一-Cookie-和Session-的区别" class="headerlink" title="一. Cookie 和Session 的区别"></a>一. Cookie 和Session 的区别</h3><p>1.1 cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+<p>1.2 cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。</p>
+<p>1.3 session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。</p>
+<p>1.4 单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<p>所以一般将登陆信息等重要信息存放为Session，其他信息如果需要保留，可以放在Cookie中</p>
+<p>转自:<br><a href="https://www.cnblogs.com/shiyangxt/archive/2008/10/07/1305506.html" target="_blank" rel="noopener">https://www.cnblogs.com/shiyangxt/archive/2008/10/07/1305506.html</a><br><a href="https://www.cnblogs.com/linguoguo/p/5106618.html" target="_blank" rel="noopener">https://www.cnblogs.com/linguoguo/p/5106618.html</a></p>
+<h3 id="一-登录Cookie与Session转换"><a href="#一-登录Cookie与Session转换" class="headerlink" title="一. 登录Cookie与Session转换"></a>一. 登录Cookie与Session转换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//未包含 就验证是否登陆 没登陆 跳转到登陆页面</span><br><span class="line">HttpSession session = request.getSession();</span><br><span class="line">//获取session</span><br><span class="line">Object loginS = session.getAttribute(Constants.SESSION_USER);</span><br><span class="line">//获取cookie</span><br><span class="line">String loginC = CookieUtil.getCookieByName(request, WechatConstants.SESSION_USER);</span><br><span class="line">System.out.println(<span class="string">"登陆对象:session对象"</span>+loginS+<span class="string">"。cookie对象："</span>+loginC);</span><br><span class="line"><span class="keyword">if</span> (loginS == null) &#123;</span><br><span class="line">	System.out.println(request.getContextPath());</span><br><span class="line">	logger.info(<span class="string">"Pedirect to login page"</span>);</span><br><span class="line">	//用户未登录 cookie是否已经过期</span><br><span class="line">	<span class="keyword">if</span>(loginC!=null &amp;&amp; !<span class="string">""</span>.equals(loginC))&#123;</span><br><span class="line">		SessionUser user = (SessionUser)JSONObject.toBean(JSONObject.fromObject(loginC), SessionUser.class);</span><br><span class="line">		session.setAttribute(WechatConstants.SESSION_USER, user);</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	response.sendRedirect(request.getContextPath() + <span class="string">"/login.jsp"</span>);</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	//用户登录成功 cookie未存储</span><br><span class="line">	<span class="keyword">if</span>(loginC==null || <span class="string">""</span>.equals(loginC))&#123;</span><br><span class="line">		CookieUtil.addCookie(response, WechatConstants.SESSION_USER, JsonUtils.toJson(loginS), CookieUtil.TIME );// 设置为60*60*24*30  一个月</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二-Cookie工具类"><a href="#二-Cookie工具类" class="headerlink" title="二. Cookie工具类"></a>二. Cookie工具类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">package com.common.utils;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.Cookie;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">import com.common.utils.Constants;</span><br><span class="line"></span><br><span class="line">public class CookieUtil &#123;</span><br><span class="line">	</span><br><span class="line">	public static int TIME = 60*60*24*30;</span><br><span class="line">	</span><br><span class="line">	private static String cookiePrefix=<span class="string">""</span>;</span><br><span class="line">	static&#123;</span><br><span class="line">		String str=Constants.BASE_PATH;</span><br><span class="line">		<span class="keyword">if</span>(str.indexOf(<span class="string">"https"</span>)!=-1)&#123;</span><br><span class="line">			cookiePrefix=<span class="string">""</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			cookiePrefix=<span class="string">"http"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 设置cookie</span><br><span class="line">	 * @param response</span><br><span class="line">	 * @param name  cookie名字</span><br><span class="line">	 * @param value cookie值</span><br><span class="line">	 * @param maxAge cookie生命周期  以秒为单位</span><br><span class="line">	 */</span><br><span class="line">	public static void addCookie(HttpServletResponse response,String name,String value,int maxAge)&#123;</span><br><span class="line">	    Cookie cookie = new Cookie(cookiePrefix+name,value);</span><br><span class="line">	    cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">	    <span class="keyword">if</span>(maxAge&gt;0)  cookie.setMaxAge(maxAge);</span><br><span class="line">	    response.addCookie(cookie);</span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	 * 根据名字获取cookie</span><br><span class="line">	 * @param request</span><br><span class="line">	 * @param name cookie名字</span><br><span class="line">	 * @<span class="built_in">return</span></span><br><span class="line">	 */</span><br><span class="line">	public static String getCookieByName(HttpServletRequest request,String name)&#123;</span><br><span class="line">	    Map&lt;String,Cookie&gt; cookieMap = ReadCookieMap(request);</span><br><span class="line">	    <span class="keyword">if</span>(cookieMap.containsKey(cookiePrefix+name))&#123;</span><br><span class="line">	        Cookie cookie = (Cookie)cookieMap.get(cookiePrefix+name);</span><br><span class="line">	        <span class="built_in">return</span> (cookie==null||cookie.getValue()==null)?<span class="string">""</span>:cookie.getValue();</span><br><span class="line">	    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	        <span class="built_in">return</span> null;</span><br><span class="line">	    &#125;  </span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	 * 清除cookie</span><br><span class="line">	 * @param request</span><br><span class="line">	 * @param name cookie名字</span><br><span class="line">	 * @<span class="built_in">return</span></span><br><span class="line">	 */</span><br><span class="line">	public static void cleanCookie(HttpServletRequest request,HttpServletResponse response)&#123;</span><br><span class="line">	    Cookie[] cookies = request.getCookies();</span><br><span class="line">	    <span class="keyword">if</span>(null!=cookies)&#123;</span><br><span class="line">	        <span class="keyword">for</span>(Cookie cookie : cookies)&#123;</span><br><span class="line">	        	//正式环境退出</span><br><span class="line">	        	<span class="keyword">if</span>(<span class="string">""</span>.equals(cookiePrefix))&#123;</span><br><span class="line">	        		//删除不带http的cookie 不清楚测试环境帐号</span><br><span class="line">	        		<span class="keyword">if</span>(cookie.getName().indexOf(<span class="string">"http"</span>)==-1)&#123;</span><br><span class="line">		        		 cookie.setValue(null);</span><br><span class="line">		                 cookie.setMaxAge(0);// 立即销毁cookie</span><br><span class="line">		                 cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">		                 System.out.println(<span class="string">"被删除的cookie名字为:"</span>+cookie.getName());</span><br><span class="line">		                 response.addCookie(cookie);</span><br><span class="line">		        	&#125;</span><br><span class="line">	        	//测试环境</span><br><span class="line">	        	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	        		//只清除带测试环境前缀的cookie 不清楚正式环境的cookie</span><br><span class="line">	        		<span class="keyword">if</span>(cookie.getName().indexOf(cookiePrefix)!=-1)&#123;</span><br><span class="line">		        		 cookie.setValue(null);</span><br><span class="line">		                 cookie.setMaxAge(0);// 立即销毁cookie</span><br><span class="line">		                 cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line">		                 System.out.println(<span class="string">"被删除的cookie名字为:"</span>+cookie.getName());</span><br><span class="line">		                 response.addCookie(cookie);</span><br><span class="line">		        	&#125;</span><br><span class="line">	        	&#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	 * 将cookie封装到Map里面</span><br><span class="line">	 * @param request</span><br><span class="line">	 * @<span class="built_in">return</span></span><br><span class="line">	 */</span><br><span class="line">	private static Map&lt;String,Cookie&gt; ReadCookieMap(HttpServletRequest request)&#123;  </span><br><span class="line">	    Map&lt;String,Cookie&gt; cookieMap = new HashMap&lt;String,Cookie&gt;();</span><br><span class="line">	    Cookie[] cookies = request.getCookies();</span><br><span class="line">	    <span class="keyword">if</span>(null!=cookies)&#123;</span><br><span class="line">	        <span class="keyword">for</span>(Cookie cookie : cookies)&#123;</span><br><span class="line">	            cookieMap.put(cookie.getName(), cookie);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="built_in">return</span> cookieMap;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年12月04日 16:31</p>
+        <p>原始链接： <a class="post-url" href="/2017/12/04/cookie/" title="Cookie与Session">https://xuzpla.github.io/2017/12/04/cookie/</a></p>
+        <footer>
+            <a href="https://xuzpla.github.io">
+                <img src="/images/photo.jpg" alt="Xuuuuuu">
+                Xuuuuuu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多少都行~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xuzpla.github.io/2017/12/04/cookie/&title=《Cookie与Session》 — Xuuuuuu's Blog&pic=https://xuzpla.github.ioimages/photo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xuzpla.github.io/2017/12/04/cookie/&title=《Cookie与Session》 — Xuuuuuu's Blog&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xuzpla.github.io/2017/12/04/cookie/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cookie与Session》 — Xuuuuuu's Blog&url=https://xuzpla.github.io/2017/12/04/cookie/&via=https://xuzpla.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xuzpla.github.io/2017/12/04/cookie/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://xuzpla.github.io/2017/12/04/cookie/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/博客/" class="color3">博客</a>
+      
+    <a href="/tags/开源项目/" class="color5">开源项目</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-Cookie-和Session-的区别"><span class="post-toc-text">一. Cookie 和Session 的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-登录Cookie与Session转换"><span class="post-toc-text">一. 登录Cookie与Session转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-Cookie工具类"><span class="post-toc-text">二. Cookie工具类</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/04/file-transfer/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">文件传输</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+      &copy; 2017 Xuuuuuu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://xuzpla.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/开源项目/">开源项目</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/开源项目/" style="font-size: 10px;">开源项目</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
